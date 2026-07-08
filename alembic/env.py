@@ -7,9 +7,9 @@ from alembic import context
 from sqlalchemy.ext.asyncio import create_async_engine
 
 from app.core.config import get_settings
-from app.db.base import Base
+from app.models.base import BaseModel
 
-# Pull in all models so their metadata is registered on Base
+# Pull in all models so their metadata is registered on BaseModel
 import app.models  # noqa: F401
 
 config = context.config
@@ -18,7 +18,7 @@ settings = get_settings()
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-target_metadata = Base.metadata
+target_metadata = BaseModel.metadata
 
 
 def run_migrations_offline() -> None:
