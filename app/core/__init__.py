@@ -1,6 +1,7 @@
-"""Core package exports."""
+"""Core package — configuration, database, logging, and exceptions."""
 
-from app.core.config import Settings, get_settings
+from app.core.config import AppSettings, get_settings
+from app.core.database import AsyncSessionLocal, engine, get_db
 from app.core.exceptions import (
     ConflictError,
     LeadForgeError,
@@ -11,11 +12,17 @@ from app.core.exceptions import (
     internal_error,
     not_found,
 )
-from app.core.logging import configure_logging, get_logger
+from app.core.logger import configure_logging, get_logger
 
 __all__ = [
-    "Settings",
+    # Config
+    "AppSettings",
     "get_settings",
+    # Database
+    "engine",
+    "AsyncSessionLocal",
+    "get_db",
+    # Exceptions
     "LeadForgeError",
     "NotFoundError",
     "ConflictError",
@@ -24,6 +31,7 @@ __all__ = [
     "conflict",
     "bad_request",
     "internal_error",
+    # Logging
     "configure_logging",
     "get_logger",
 ]

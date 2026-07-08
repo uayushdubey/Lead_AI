@@ -8,10 +8,10 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.v1 import api_router
 from app.core.config import get_settings
-from app.core.logging import configure_logging
+from app.core.logger import configure_logging
 
 settings = get_settings()
-configure_logging(debug=settings.app_debug)
+configure_logging(settings)
 
 
 @asynccontextmanager
@@ -25,7 +25,7 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
 def create_app() -> FastAPI:
     """Application factory — keeps test setup clean."""
     app = FastAPI(
-        title="LeadForge AI",
+        title=settings.app_name,
         description="Business discovery & opportunity analysis platform",
         version="0.1.0",
         docs_url="/docs" if settings.app_debug else None,
