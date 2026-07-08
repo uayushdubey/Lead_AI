@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # LeadForge AI
 
 > Business discovery & opportunity analysis platform built with FastAPI, PostgreSQL, Celery, and Redis.
@@ -87,3 +88,7 @@ docker compose exec api alembic upgrade head
 # Rollback one step
 docker compose exec api alembic downgrade -1
 ```
+=======
+# Lead_AI
+Building a tool to find lead 
+>>>>>>> 47bf47e9da21f36a940ba49e945b3efd7bcef2d1
